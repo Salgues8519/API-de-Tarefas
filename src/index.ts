@@ -6,6 +6,9 @@ const app = express()
 
 app.use(json())
 
-app.use(rotas())
+app.use(rotas)
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT, ()=>{
+    console.log('Servidor Inicializado');
+    
+})
