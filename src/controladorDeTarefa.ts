@@ -54,3 +54,19 @@ export function atualizarStatus(req:Request, res:Response):any {
         tarefa
     });
 }
+
+export function excluir (req:Request, res:Response):any {
+    const {id} =req.params
+
+    const tarefaIndece = tarefas.findIndex((item)=>{
+        return item.id === id
+    })
+    if (tarefaIndece === -1){
+        return res.status(404).json({
+            mensagem: 'Tarefa não encontrada'
+        })
+    }
+    tarefas.splice(tarefaIndece, 1)
+
+    return res.status(204).send()
+}
